@@ -60,6 +60,17 @@ export class TemplateSrv implements BaseTemplateSrv {
     return this.dependencies.getVariables();
   }
 
+  parseVariableName(name: string): string | null {
+    const results = name.match(this.regex);
+    if (!results) {
+      return null;
+    }
+    // instead of [match, var1, var2, fmt2, var3, fieldPath, fmt3]
+    // we are only interested in the variable names
+    const [, var1, var2, , var3] = results;
+    return var1 || var2 || var3;
+  }
+
   updateIndex() {
     const existsOrEmpty = (value: any) => value || value === '';
 
