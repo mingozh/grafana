@@ -36,6 +36,9 @@ export function runSharedRequest(options: QueryRunnerOptions): Observable<PanelD
     const dashboard = getDashboardSrv().getCurrent();
     const listenToPanelId = getPanelIdFromQuery(options.queries);
 
+    // Check if panel is using multi-datasource variable
+
+
     if (!listenToPanelId) {
       subscriber.next(getQueryError('Missing panel reference ID'));
       return undefined;
