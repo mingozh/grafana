@@ -238,6 +238,8 @@ export class PanelQueryRunner {
     // Add deprecated property
     (request as any).rangeRaw = timeRange.raw;
 
+    debugger;
+
     try {
       const ds = await getDataSource(datasource, request.scopedVars, publicDashboardAccessToken);
       const isMixedDS = ds.meta?.mixed;
